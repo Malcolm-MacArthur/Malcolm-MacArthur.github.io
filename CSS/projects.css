@@ -1,0 +1,43 @@
+.content{
+    clear: both;
+}
+
+.content__title{
+    text-align: center;
+    font-size: 10vmin;
+    font-family: 'Oswald', sans-serif;
+}
+
+.box{
+    height: 30vw;
+    width: 30vw;
+
+    border-style: solid;
+
+    position: relative;
+    left: 35vw;
+    
+    background-color: grey;
+}
+
+.box__text{
+    margin-top: -50%;
+    
+    text-align: center;
+    font-size: 3vw;
+}
+
+.box__image:hover{
+    opacity: 0.4;
+}
+
+.box__image{
+    width: 30vw;
+    height: 30vw;
+    
+    transition: 0.3s;
+    
+    object-fit: none;
+    object-position: 1% 10%;
+    opacity: 0;
+}

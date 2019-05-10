@@ -1,6 +1,7 @@
 
 body {
     margin: 0;
+
     overflow: hidden
 }
 
@@ -9,9 +10,11 @@ body {
 }
 
 .content__summary{
-    float: left;
     margin-left: 10vw;
     margin-top: 20vmin;
+
+    float: left;
+
     font-size: 3vmin;
     width: 40vw;
     
