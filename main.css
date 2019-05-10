@@ -1,0 +1,68 @@
+
+body {
+    margin: 0;
+}
+
+.logo {
+    width: 42vmin;
+    height: 10vmin;
+    
+    position: relative;
+    float: left;
+    z-index: 1;
+    
+    background-image: linear-gradient(135deg, grey 82%, transparent 0%);
+}
+
+.logo__name{
+    margin-left: 5%;
+    margin-bottom: 0;
+    margin-top: 3%;
+    
+    font-size: 4.5vmin;
+    font-family: 'Oswald', sans-serif;
+}
+
+.navigator {
+    width: 60vmin;
+    height: 7vmin;
+    
+    padding-left: 5vmin;
+    
+    margin-left: -7vmin;
+    
+    position: relative;
+    float:left;
+    z-index: 0;
+    
+    background-image: linear-gradient(135deg, red 82%, transparent 0%);
+}
+
+.button {
+    padding: 0 1vmin;
+    
+    border-width: 0.5vmin;
+    
+    margin-left: 1vmin;
+    margin-top: 1vmin;
+    
+    position: relative;
+    float: left;
+    
+    transform: skew(-45deg);
+    border-style: solid;
+    border-color: transparent; 
+    transition: 0.3s;
+    background-color: transparent;
+}
+
+.button__text {
+    transform: skew(45deg);
+    margin: 0;
+    color: black;
+    font-size: 3vmin;
+}
+
+.button:hover {
+    border-color: black;
+}
