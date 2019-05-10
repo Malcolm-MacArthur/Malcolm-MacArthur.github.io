@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Malcolm MacArthur</title>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="CSS/researcher.css">
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <p class="logo__name">Malcolm MacArthur</p>
+    </div>
+
+    <div class="navigator">
+        <button class="button" onclick="location.href='index.html'">
+            <p class="button__text">Home</p>
+        </button>
+        <button class="button" onclick="location.href='projects.html'">
+            <p class="button__text" >Projects</p>
+        </button>
+        <button class="button" onclick="location.href='experience.html'">
+            <p class="button__text">Experience</p>
+        </button>
+    </div>
+</div>
+<div class="content">
+    <h1 class="content__title">Researcher</h1>
+
+    <h2 class="content__topic">Summary</h2>
+    <p class="content__text">
+        I have created a large Python3 stock analysis program over the summer of 2018. It scrapes and processes data
+        of over 6000 US stock tickers from multiple websites, and it stores the data in a SQLite3 database. After given
+        some calculation settings, it generates a score for every stock and displays it along with other information in
+        a table to determine which stock fits the user’s needs. The scraping use multithreading and multiprocessing for
+        maximum efficiency, and I use PyQt5 to implement a UI. If the program were ever to get popular, I fear it would
+        be blocked by one of the sites being scraped, so the program repository is not publicly available. However, it
+        is available upon request.</p>
+
+    <h2 class="content__topic"> Collection</h2>
+    <p class="content__text">
+        Before any analysis can be done, data must be collected. The user first navigates to the page displayed below by clicking
+        the "collect" tab at the top right. It is also worth noting that when starting the program this page is displayed first.
+    </p>
+    <img class="content__image" src="Pictures/Researcher/collect_page.png">
+    <p class="content__text">
+        The user must press the "collect" button to start. This action switches the collect tab screen(displayed below)
+        and starts the scraping process.
+    </p>
+    <img class="content__image" src="Pictures/Researcher/collecting_page.png">
+    <p class="content__text">
+        The scraping process first downloads and parses a csv file from the official NASDAQ website which contains a list
+        of all public US stock tickers. Then it starts scraping the individual Yahoo Finance ticker pages. The ticker
+        page collection process will take about 2 hours due to the limiter I placed on the scraping process. Furthermore,
+        for every Yahoo Finance ticker finished, it calls an API for the price history of the ticker in order to calculate the ticker's rsi.
+        This entire process is multithreaded to increase and/or maintain the speed. The process can be cancelled any time,
+        if the user presses the "stop" button. The multithreaded process can be stopped because I implemented a kill signal
+        that all threads and the thread creator listens for. All successes and errors are displayed on the log. Once the
+        process is done or has been killed, the user can press "finish" to go back to the original screen.
+        <br>
+        <br>
+    </p>
+
+    <h2 class="content__topic">Analyses</h2>
+    <p class="content__text">
+        If at least one days worth of ticker data stored in the SQLite tables, then analysis can be done. It should also
+        be worth noting that analysis can be done will the scraping process is active. The user must press the "Analyze"
+        at the top right to get bunch of options shown below.
+    </p>
+    <img class="content__image" src="Pictures/Researcher/options_page.png">
+    <p class="content__text">
+        With "Get measures from" you can select any day stored in the database to analyze. The "Stock performance on"
+        can be used to see the percent gain/loss the stock has achieved past the "Get measures from date". The "Analyze"
+        section gives the user a chance to analyze a certain sub group of tickers. Lastly the "Measure Strengths" section
+        gives the user the power to select which measure will have the most impact on score. The down arrow means the lower
+        the value the better and the up arrow is the opposite. These arrows can bw switched by clicking them. The numbers
+        beside the arrows is the percent strength of the measure. The measures should sum to a 100% but it is not required.
+        <br>
+        After the user has selected the options, the "Analyze" button is pressed. This brings up a new a bigger window
+        shown below.
+    </p>
+    <img class="content__image" src="Pictures/Researcher/analysis_window.png">
+    <p class="content__text">
+        There are two tables shown. The top table shows the minor statistics of the group of tickers which are mean, Q1,
+        median and Q3. The bottom table shows the rankings of each ticker and there respective measure rankings. Each cell
+        has a number contained within curly braces which shows the rank of the stock's measure compared with the other stocks'.
+        The number beside the rank number is the actual value of the measure for the specific stock. For each stock a score
+        is produced with the ranking and strength of each measure. With this score the user can determine which stock to buy.
+    </p>
+</div>
+</body>
+</html>

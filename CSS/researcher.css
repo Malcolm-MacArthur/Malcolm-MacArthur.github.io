@@ -1,0 +1,27 @@
+.content{
+    clear: both;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.content__title{
+    text-align: center;
+    font-size: 10vmin;
+    font-family: 'Oswald', sans-serif;
+}
+
+.content__topic{
+    text-align: center;
+    font-size: 24px;
+}
+
+.content__text{
+    font-size: 24px
+}
+
+.content__image{
+    position: relative;
+    left: 15vw;
+    height: 40vw;
+    width: 50vw;
+}
