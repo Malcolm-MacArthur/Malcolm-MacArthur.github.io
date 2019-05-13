@@ -9,4 +9,4 @@ page has detailed information about that comes along with pictures. Lastly the
 have.
 
 ### Naming convention followed
-The HTML/CSS follows the BEM methodology
+The HTML/CSS class naming follows the BEM methodology

@@ -25,3 +25,8 @@
     height: 40vw;
     width: 50vw;
 }
+
+.content__equation{
+    font-size: 24px;
+    text-align: center;
+}
