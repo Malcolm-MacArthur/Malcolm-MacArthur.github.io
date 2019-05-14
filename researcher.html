@@ -9,6 +9,7 @@
     <script type="text/javascript"
             src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async>
     </script>
+    <script> </script> <!--Used to "fix" chrome transition bug https://stackoverflow.com/a/42969608/5262028-->
 </head>
 <body>
 <div class="header">
@@ -147,11 +148,11 @@
         with the other stocks of same measure. The number beside the rank number is the actual value of the measure for
         the specific stock. For each stock a score is produced with the ranking and strength of each measure. By
         default, the stocks will be ordered by score, with the highest score will be placed at the top. With this
-        score the user can determine which stock to buy. The score formula is shown below
+        score the user can determine which stock to buy. The score formula is shown below.
     </p>
 
     <p class="content__equation">
-        $$Score = \sum_{i=0}^m{(n-R_i) * S_i * 10^4\over{n}}$$
+        $$Score = \sum_{i=1}^m{(n-R_i) * S_i * 10^4\over{n}}$$
         m = The number of measures <br>
         n = The number of stocks being compared<br>
         \(R_i\) = The measure's rank<br>
