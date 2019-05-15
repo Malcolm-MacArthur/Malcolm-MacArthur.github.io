@@ -1,23 +1,22 @@
-.content{
-    clear: both;
+body{
+    background-color: #393e46;
 }
 
-.content__title{
-    text-align: center;
-    font-size: 10vmin;
-    font-family: 'Oswald', sans-serif;
+.content{
+    clear: both;
 }
 
 .box{
     height: 30vw;
     width: 30vw;
-
-    border-style: solid;
+    
+    margin: 5vmin;
 
     position: relative;
     left: 35vw;
     
-    background-color: grey;
+    background-color: #222831;
+    cursor: pointer;
 }
 
 .box__text{
@@ -33,11 +32,11 @@
     text-align: center;
     font-size: 3vw;
     
-    background-color: grey;
-    box-shadow: 0 0 1vw 1vw grey;
+    color: #eeeeee;
 }
 
-.box__image:hover{
+
+.box:hover .box__image{
     opacity: 0.4;
 }
 

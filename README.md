@@ -8,5 +8,10 @@ page has detailed information about that comes along with pictures. Lastly the
 "Skills & experience" section shows my work experience and technical skills I 
 have.
 
+### Browsers Supported
+- Chrome
+- Firefox
+- Safari
+
 ### Naming convention followed
 The HTML/CSS class naming follows the BEM methodology

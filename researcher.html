@@ -18,13 +18,13 @@
     </div>
 
     <div class="navigator">
-        <button class="button" onclick="location.href='index.html'">
+        <button class="button button--normal" onclick="location.href='index.html'">
             <p class="button__text">Home</p>
         </button>
-        <button class="button" onclick="location.href='projects.html'">
+        <button class="button button--selected" onclick="location.href='projects.html'">
             <p class="button__text" >Projects</p>
         </button>
-        <button class="button" onclick="location.href='experience.html'">
+        <button class="button button--normal" onclick="location.href='experience.html'">
             <p class="button__text">Experience</p>
         </button>
     </div>
@@ -64,23 +64,23 @@
     <u class="content__text">Collection Part</u>
     <p class="content__text">
         Before any analysis can be done, data must be collected. The user first navigates to the page displayed below by
-        clicking the "collect" tab at the top right. It is also worth noting that when starting the program this page is
+        clicking the "collect" tab at the top left. It is also worth noting that when starting the program this page is
         displayed first.
     </p>
-    <img class="content__image" src="Pictures/Researcher/collect_page.png">
+    <img class="content__tall-image" src="Pictures/Researcher/collect_page.png">
     <p class="content__text">
         The user must press the "collect" button to start. This action switches to the collection progress screen
         (displayed below) and starts the scraping session.
     </p>
-    <img class="content__image" src="Pictures/Researcher/collecting_page.png">
+    <img class="content__tall-image" src="Pictures/Researcher/collecting_page.png">
     <p class="content__text">
         The scraping session first downloads and parses a csv file from the official NASDAQ website which contains a
         list of all public US stock tickers and the respective sector and industry the stock is considered to be in.
         Then it starts scraping 2 Yahoo Finance pages and makes one IEX API call for every ticker read from the csv
         file. The API call is used to get the stock’s price history in order to calculate its RSI while the rest of the
-        measures are scraped off the Yahoo Finance pages. The Yahoo Finance/API collection process will take about 2
-        hours due to the reactive limiter I created for the scraping session (More about why later). This entire process
-        is multithreaded and multiprocessed to increase and/or maintain the speed. The main process creates a collection
+        data is scraped off the Yahoo Finance pages. The Yahoo Finance/API collection process will take about 2 hours
+        due to the reactive limiter I created for the scraping session (More about why later). This entire process is
+        multithreaded and multiprocessed to increase and/or maintain the speed. The main process creates a collection
         process which in turn creates multiple threads for scraping after parsing the csv file. Every stock that has had
         all of its raw data collected is passed to a refinery process, which was initially created by the collection
         process. The refinery process cleans/formats the data, calculates some measures, and inserts the stock measures
@@ -92,9 +92,9 @@
         out all successes and errors which you can scroll through. A feature of the log is that it holds a maximum of
         500 lines to maintain CPU performance. Since the log only holds 500 lines, all errors are also appended to an
         error text file to be read later. The log also keeps the scroll bar at the bottom, if the scroll bar has not
-        been touched or the user has scrolled to the bottom. Lastly, once the scraping session is done(ie. the progress
-        bar at the top has reached 100%) or has been killed, the user presses the "finish" button to go back to the
-        original screen.
+        been touched or the user has scrolled to the bottom. Moreover, the user can clear the log by pressing the
+        “Clear Log” button. Lastly, once the scraping session is done(ie. the progress bar at the top has reached 100%)
+        or has been killed, the user presses the "finish" button to go back to the original screen.
     </p>
 
     <u class="content__text">Analyses Part</u>
@@ -103,7 +103,7 @@
         worth noting that analysis can be done while the scraping session is active. The user must press the "Analyze"
         tab at the top left to get bunch of options shown below.
     </p>
-    <img class="content__image" src="Pictures/Researcher/options_page.png">
+    <img class="content__tall-image" src="Pictures/Researcher/options_page.png">
     <p class="content__text">
         With "Get measures from" you can select any day stored in the database to analyze. The "Stock performance on"
         can be used to see the percent gain/loss the stock has achieved past the "Get measures from" date. The "Analyze"
@@ -121,8 +121,8 @@
     <p class="content__equation">
         when \(p_t \ne 0\) or \(s_t \ne 0\)
         $$NTS = {(p_t-s_t)*100 \over{p_t+s_t}}$$
-        \(p_t\) = The number of purchase transactions <br>
-        \(s_t\) = The number of sale transactions
+        \(p_t\) = Total number of insider purchase transactions <br>
+        \(s_t\) = Total number of insider sale transactions
     </p>
 
     <p class="content__text">
@@ -132,23 +132,23 @@
     <p class="content__equation">
         when \(p_s \ne 0\) or \(s_s \ne 0\)
         $$NSS = {(p_s-s_s)*100 \over{p_s+s_s}}$$
-        \(p_s\) = Total number of shares bought <br>
-        \(s_s\) = Total number of shares sold
+        \(p_s\) = Total number of shares bought by insiders <br>
+        \(s_s\) = Total number of shares sold by insiders
     </p>
 
     <p class="content__text">
         After the user has selected the options, the "Analyze" button should be pressed. This brings up a new a bigger
         window shown below.
     </p>
-    <img class="content__image" src="Pictures/Researcher/analysis_window.png">
+    <img class="content__wide-image" src="Pictures/Researcher/analysis_window.png">
     <p class="content__text">
         There are two tables shown. The top table shows the basic statistics of the group of stocks which are mean, Q1,
         median and Q3. The bottom table shows the main information the user is interested in. Each cell, in the main
         table, has a number contained within curly braces which shows the rank of the stock's specific measure compared
         with the other stocks of same measure. The number beside the rank number is the actual value of the measure for
-        the specific stock. For each stock a score is produced with the ranking and strength of each measure. By
-        default, the stocks will be ordered by score, with the highest score will be placed at the top. With this
-        score the user can determine which stock to buy. The score formula is shown below.
+        the specific stock. For each stock, a score is produced with the ranking and strength of each measure. By
+        default, the stocks are ordered by score, with the highest scoring stocks being placed at the top. With this
+        score, the user can determine which stock to buy. The score formula is shown below.
     </p>
 
     <p class="content__equation">
@@ -160,14 +160,14 @@
     </p>
 
     <p class="content__text">
-        Lastly the user can resize top table or bottom table by clicking and dragging the white line between the tables.
+        Lastly the user can resize top table and bottom table by clicking and dragging the white line between the tables.
         If the line is dragged all the way to the top the statistics table is hidden, and if it is dragged all the way
         to the bottom the main table is hidden. If the user clicks the measure title, x, of any column, the stocks will
         reorganize so that stocks with the highest ranks of measure x are displayed first. If the user clicks the
         measure x’s title again, stock ordering will be reversed. For example, in the below picture, I have hidden the
         statistic table and I have clicked the ROE column title once.
     </p>
-    <img class="content__image" src="Pictures/Researcher/analysis_window_modified.png">
+    <img class="content__wide-image" src="Pictures/Researcher/analysis_window_modified.png">
 
     <h2 class="content__topic">Technologies used</h2>
     <u class="content__text">Python 3</u>
@@ -200,11 +200,11 @@
     </p>
     <u class="content__text">Requests</u>
     <p class="content__text">
-        It got the HTML from Yahoo Finance to be parsed. I have had no problems with it.
+        It gets the HTML from Yahoo Finance to be parsed. I have had no problems with it.
     </p>
     <u class="content__text">Beautiful Soup 4</u>
     <p class="content__text">
-        It used Beautiful Soup to parse the data and I felt it was very easy to use
+        The program uses Beautiful Soup to parse the HTML pages, and I felt it was very easy to use
     </p>
 
     <h2 class="content__topic">Complications and Lessons Learned</h2>
@@ -226,17 +226,17 @@
         library is actively supported by a company or community; the key word is active. Next, you should check if the
         library is buggy by searching “library x is buggy” with Google. Lastly do some tests to make sure it can meet
         your program requirements.
-        <br>
-        Another complication I faced was optimizing the scraping session. As mentioned above choosing the right library
+        <br><br>
+        Another complication I faced was optimizing the scraping session. As mentioned above, the library
         effected how fast I could scrape Yahoo Finance pages. Even with the requests library I still felt I could
         improve the speed. After doing some optimization tests I realized I should multithreaded and multiprocess the
         scraping session. I learned a lot about optimization on how to mulithread and multiprocesss a program thanks to
         developing Researcher.
-        <br>
-        With such optimized scraping code, Yahoo Finance did not like how fast I was going. Like mentioned earlier, I
-        did do some speed tests early on and Yahoo Finance did not block me. However, after scraping a couple days worth
-        of data, they started blocking me if I went to fast. Initially it took 20 minutes to scrape all the pages, but
-        after Yahoo Finance wanted me to slow down, I scrape everything in 2 hours now. So I learned that I should
+        <br><br>
+        With such optimized scraping code, Yahoo Finance did not like how fast I was going. Like mentioned earlier,
+        I did do some speed tests early on and Yahoo Finance did not block me. However, after scraping a couple days
+        worth of data, they started blocking me if I went to fast. Initially it took 20 minutes to scrape all the pages,
+        but after Yahoo Finance wanted me to slow down, it scrapes everything in 2 hours now. So I learned that I should
         generally limit how fast I should scrape a site.
     </p>
 
@@ -250,10 +250,10 @@
     <h2 class="content__topic">FAQ</h2>
     <u class="content__text">Why didn’t you exclusively just use a free API?</u>
     <p class="content__text">
-        The limited free APIs I found, seemed incomplete and inaccurate. I trust Yahoo Finance data and it has data such
-        as insider trading that free APIs do not have. I like Yahoo Finance so much, that I am willing to wait 2 hours
-        for the collection to complete. However, the IEX API I use for the price history for each stock seems to be
-        improving monthly. If IEX improves enough, I might switch to it.
+        The limited free APIs I found, seemed incomplete and inaccurate. I trust Yahoo Finance data and it has data,
+        such as insider trading, that free APIs do not have. I like Yahoo Finance so much, that I am willing to wait 2
+        hours for the collection to complete. However, the IEX API I use for the price history for each stock seems to
+        be improving monthly. If IEX improves enough, I might switch to it.
     </p>
     <u class="content__text">Does the program also work for OSX and Windows?</u>
     <p class="content__text">
@@ -264,7 +264,7 @@
     <u class="content__text"> What is the scraping speed of this program?</u>
     <p class="content__text">
         It was initially 20 minutes for a couple of days, but Yahoo Finance did not like how fast I was going and
-        started blocking me based off how fast I was going
+        started blocking me based off how fast I was going. So now it takes 2 hours.
     </p>
     <u class="content__text">If Researcher was funded what would you change?</u>
     <p class="content__text">

@@ -1,21 +1,24 @@
-.content{
-    clear: both;
+body{
+    background-color: #393e46;
 }
 
-.content__title{
-    text-align: center;
-    font-size: 10vmin;
-    font-family: 'Oswald', sans-serif;
+.content{
+    clear: both;
+    
+    padding: 5vh 5vw;
+    margin: 10vh 10vw;
+    
+    background-color: #222831;
 }
 
 .content__underline{
-    margin-left: 25vw;
     
     font-size: 3vmin;
+    color: #eeeeee;
 }
 
 .content__list{
-    margin-left: 25vw;
     
     font-size: 3vmin;
+    color: #eeeeee;
 }

@@ -1,6 +1,9 @@
-
+html,
 body {
-    overflow: hidden
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    background-color: #393e46;
 }
 
 .content{
@@ -8,14 +11,14 @@ body {
 }
 
 .content__summary{
+    width: 40vw;
     margin-left: 10vw;
     margin-top: 20vmin;
 
     float: left;
-
-    font-size: 3vmin;
-    width: 40vw;
     
+    color: #eeeeee;
+    font-size: 3vmin; 
 }
 
 .content__image {
