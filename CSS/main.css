@@ -1,6 +1,7 @@
 
 body {
     margin: 0;
+    background-color: #393e46;
 }
 
 .header{
@@ -8,7 +9,7 @@ body {
 }
 
 .logo {
-    width: 42vmin;
+    width: 45vw;
     height: 10vmin;
     
     position: relative;
@@ -18,29 +19,50 @@ body {
     background-image: linear-gradient(135deg, #222831 81%, transparent 0%);
 }
 
+.logo__button {
+    padding: 0;
+
+    border-width: 0;
+    
+    float: right;
+    position: relative;
+    top: 10%;
+    right: 25%;
+
+    background-color: transparent;
+    cursor: pointer;
+}
+
 .logo__name{
-    margin-left: 3%;
-    margin-bottom: 0;
-    margin-top: 3%;
+    margin: 0;
+    
+    
     
     font-size: 4.5vmin;
     font-family: 'Oswald', sans-serif;
     color: #00adb5;
+    text-align: right;
 }
 
 .navigator {
-    width: 60vmin;
+    width: 56vw;
     height: 7vmin;
     
-    padding-left: 2vmin;
+    padding-left: 3vmin;
     
-    margin-left: -7vmin;
+    margin-left: -8vw;
     
     position: relative;
     float:left;
     z-index: 1;
     
-    background-image: linear-gradient(135deg, #222831 82%, transparent 0%);
+    background-image: linear-gradient(135deg, #222831 90%, transparent 0%);
+}
+
+.navigator__button-group{
+    position: relative;
+    float: right;
+    right: 10%;
 }
 
 .button {
@@ -52,13 +74,12 @@ body {
     position: relative;
     float: left;
     
+    display: flex;
     transition: 0.3s;
     transform: skew(-45deg);
     background-color: transparent;
     cursor: pointer;
-    
-    
-    border-width: 0.5vmin;
+    border-width: 0.4vmin;
     border-style: solid;
 }
 

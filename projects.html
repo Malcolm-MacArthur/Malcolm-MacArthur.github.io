@@ -11,19 +11,23 @@
 <body>
 <div class="header">
     <div class="logo">
-        <p class="logo__name">Malcolm MacArthur</p>
+        <button class="logo__button" onclick="location.href='index.html'">
+            <p class="logo__name">Malcolm MacArthur</p>
+        </button>
     </div>
 
     <div class="navigator">
-        <button class="button button--normal" onclick="location.href='index.html'">
-            <p class="button__text" >Home</p>
-        </button>
-        <button class="button button--selected" onclick="location.href='projects.html'">
-            <p class="button__text" >Projects</p>
-        </button>
-        <button class="button button--normal" onclick="location.href='experience.html'">
-            <p class="button__text" >Experience</p>
-        </button>
+        <div class="navigator__button-group">
+            <button class="button button--selected" onclick="location.href='projects.html'">
+                <p class="button__text">Projects</p>
+            </button>
+            <button class="button button--normal" onclick="location.href='experience.html'">
+                <p class="button__text" >Experience</p>
+            </button>
+            <button class="button button--normal" onclick="location.href='contact.html'">
+                <p class="button__text">Contact</p>
+            </button>
+        </div>
     </div>
 </div>
 <div class="content">

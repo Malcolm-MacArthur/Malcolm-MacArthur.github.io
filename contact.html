@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Malcolm MacArthur</title>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="CSS/main.css">
-    <link rel="stylesheet" type="text/css" href="CSS/home.css">
+    <link rel="stylesheet" type="text/css" href="CSS/contact.css">
     <script> </script> <!--Used to "fix" chrome transition bug https://stackoverflow.com/a/42969608/5262028-->
 </head>
 <body>
@@ -24,7 +24,7 @@
             <button class="button button--normal" onclick="location.href='experience.html'">
                 <p class="button__text" >Experience</p>
             </button>
-            <button class="button button--normal" onclick="location.href='contact.html'">
+            <button class="button button--selected" onclick="location.href='contact.html'">
                 <p class="button__text">Contact</p>
             </button>
         </div>
@@ -32,14 +32,22 @@
 </div>
 
 <div class="content">
-    <p class="content__summary">
-        Welcome visitor! My name is Malcolm and here is what you should know about me.
-        I just finished my third year as a Computing Science student at the University of Alberta. I am passionate about
-        programming, so much so that I treat it as a hobby. Moreover, I am proficient at data scraping, Python3 and SQLite3.
-        Lastly, I am eager to get an internship so that I can get some real world experience and make a positive impact
-        on society.
+    <u class="content__topic">Email</u>
+    <p class="content__text">university: mimacart@ualberta</p>
+    <p class="content__text">personal: malco.macarthur@gmail.com</p>
+    <u class="content__topic">GitHub</u>
+    <p class="content__text">
+        university: Malcolm1998
+        <button class="content__button" onclick="location.href='https://github.com/Malcolm1998'">
+            <img class="content__github-logo" src="Pictures/github_logo.png">
+        </button>
     </p>
-    <img class="content__image" src="Pictures/me.png" alt="Me">
+    <p class="content__text">
+        personal: Malcolm-MacArthur
+        <button class="content__button" onclick="location.href='https://github.com/Malcolm-MacArthur'">
+            <img class="content__github-logo" src="Pictures/github_logo.png">
+        </button>
+    </p>
 </div>
 
 </body>

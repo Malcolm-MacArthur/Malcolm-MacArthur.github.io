@@ -1,0 +1,43 @@
+.content{
+    clear: both;
+
+    padding: 5vh 5vw;
+    margin: 10vh 10vw;
+
+    background-color: #222831;
+}
+
+.content__topic{
+    text-align: center;
+    font-size: 3vmin;
+    color: #00adb5;
+}
+
+.content__text{
+    font-size: 3vmin;
+    color: #eeeeee;
+}
+
+.content__github-logo{
+    height: 3vmin;
+
+    background: url(/Pictures/me.png);
+}
+
+.content__button{
+    border: 0;
+
+    background: transparent;
+    cursor: pointer;
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .content{
+        margin: 10vh 0;
+    }
+
+    .content__tall-image{
+        left: 10%;
+        width: 80%;
+    }
+}
