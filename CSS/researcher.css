@@ -1,8 +1,13 @@
+html,
+body {
+	height: 100%;
+}
+
 .content{
     clear: both;
     
-    padding: 5vh 5vw;
-    margin: 10vh 10vw;
+    padding: 0 5vw;
+    margin: 0 10vw;
     
     background-color: #222831;
 }
@@ -27,6 +32,10 @@
     color: #eeeeee;
 }
 
+.content__text:last-child{
+    margin-bottom: 0;
+}
+
 .content__tall-image{
     width: 50%;
     
@@ -48,13 +57,59 @@
     color: #222831;
 }
 
+.top-scroll-button{
+    display: inline-block;
+    height: 1.2em;
+    
+    padding: 0;
+    
+    position: fixed;
+    bottom: 1vh;
+    right: 1vw;
+    
+    border: 0vmin #eeeeee solid;
+    background: linear-gradient(135deg, transparent 20%, #222831 20%,  #222831 80%, transparent 80%);
+    color: #eeeeee;
+    font-size: 10vmin;
+    transition: 0.3s;
+}
+
+.top-scroll-button__text{
+    position: relative;
+    bottom: 0;
+    
+    display: block;
+    
+    /*Blue color "starts" after 12% and ends at 80%*/
+    background-image: linear-gradient(180deg, #eeeeee 12%, #00adb5 0%); 
+    
+    transition: 0.3s;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.top-scroll-button:focus {
+  outline: none;
+}
+
+.top-scroll-button:hover .top-scroll-button__text{
+    transform: translateY(-8%);
+}
+
+
 @media (max-aspect-ratio: 1/1) {
     .content{
-        margin: 10vh 0;
+        margin: 0;
     }
     
     .content__tall-image{
         left: 10%;
         width: 80%;
+    }
+    
+    
+    .top-scroll-button{
+        background: linear-gradient(135deg, transparent 20%, #393e46 20%,  #393e46 80%, transparent 80%);
     }
 }

@@ -9,9 +9,26 @@
     <script type="text/javascript"
             src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async>
     </script>
+    <script>
+        function updateProgressColor() {
+            let percentScroll = (window.pageYOffset + screen.height*(window.pageYOffset/document.body.scrollHeight))
+              / document.body.scrollHeight;
+            let topScrollButton = document.getElementsByClassName("top-scroll-button__text")[0];
+            let colorRange = 68;
+            let colorStart = 12;
+
+            let colorOffset =  colorStart + colorRange *  percentScroll;
+            topScrollButton.style.backgroundImage =
+              'linear-gradient(180deg, #eeeeee '+colorOffset.toString()+'%, #00adb5 0%)';
+        }
+
+        function scrollToTop() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
     <script> </script> <!--Used to "fix" chrome transition bug https://stackoverflow.com/a/42969608/5262028-->
 </head>
-<body>
+<body onscroll="updateProgressColor()" onresize="updateProgressColor()">
 <div class="header">
     <div class="logo">
         <button class="logo__button" onclick="location.href='index.html'">
@@ -21,10 +38,10 @@
 
     <div class="navigator">
         <div class="navigator__button-group">
-            <button class="button button--normal" onclick="location.href='projects.html'">
+            <button class="button button--selected" onclick="location.href='projects.html'">
                 <p class="button__text">Projects</p>
             </button>
-            <button class="button button--selected" onclick="location.href='experience.html'">
+            <button class="button button--normal" onclick="location.href='experience.html'">
                 <p class="button__text" >Experience</p>
             </button>
             <button class="button button--normal" onclick="location.href='contact.html'">
@@ -33,18 +50,30 @@
         </div>
     </div>
 </div>
+<div class="top-styler"></div>
 <div class="content">
     <h1 class="content__title">Researcher</h1>
 
     <h2 class="content__topic">Summary</h2>
     <p class="content__text">
-        I have created a large Python3 stock analysis program over the summer of 2018. It scrapes and processes data of
-        over 6000 US stock tickers from multiple websites, and it stores the data in a SQLite3 database. After given
-        some calculation settings, it generates a score for every stock and displays it along with other information in
-        a table to determine which stock fits the user’s needs. The scraping process uses multithreading and
-        multiprocessing for maximum efficiency. Lastly, the program uses PyQt5 to implement a UI. If the program were
-        ever to get popular, I fear it would be blocked by one of the sites being scraped, so the program repository is
-        not publicly available.
+        I have created a large Python stock analysis program over the summer of 2018. There are two parts to this
+        program, collection and analysis. Before any analysis can be done, some data must be collected. In the
+        collection section, a csv file of basic stock information is first downloaded from the official NASDAQ website.
+        Then the file is parsed to get the list of 6000+ stock tickers along with their respective industry and sector.
+        For every ticker, two pages are requested from Yahoo Finance and one API call is made to get the raw data. For
+        maximum efficiency, the Yahoo Finance data scraping is multithreaded and multiprocessed. The raw data is then
+        cleaned and used as measures or used to calculate some measures. Once all the collection has completed, the data
+        is stored in a SQLite database.
+        <br>
+        The analysis section lets the user analyze the stock information. Before the
+        analysis is done, the user can choose and edit multiple options on how to analyze the stock information. The
+        user can choose the time, the group of stocks to analyze and how much strength each measure has on the final
+        score of each stock. When the user is satisfied with the options given, analysis is done. First ranks are given
+        to each measure compared with stocks with the same measure. Then, using the weightings and ranks of each
+        measure, a score is produced for each stock. The higher the score, the better, and the more likely the user
+        should buy the stock. Some basic statistics are also calculated. After the calculations are done, all the data
+        is displayed in two tables. The Researcher repository is not publicly available because I fear Yahoo Finance
+        may block any requests from the program, if the program were to be used by multiple people.
     </p>
 
     <h2 class="content__topic">Purpose of Project</h2>
@@ -64,7 +93,7 @@
         <u class="content__text">Collection session</u>:  The collection, formatting and storage of stock data from start to finish.<br>
         <u class="content__text">Collection section</u>: The GUI which lets the user manage a collection session.<br>
         <u class="content__text">Stock Measures</u>: Data that helps determine a stock’s performance<br>
-        <u class="content__text">Analysis section</u>: The GUI and windows which lets the user analyze stock measures.<br>
+        <u class="content__text">Analysis section</u>: The GUI and windows which lets the user analyze stocks.<br>
     </p>
 
     <h2 class="content__topic">Features</h2>
@@ -82,12 +111,12 @@
         startup. If the user is at the collection section of the window and there is no collection session running, the
         user navigates to this page by clicking the "collect" tab at the top left.
     </p>
-    <img class="content__tall-image" src="Pictures/Researcher/collect_page.png">
+    <img class="content__tall-image" src="Pictures/Researcher/collect_page.png" alt="Collect Page">
     <p class="content__text">
         The user must press the "collect" button to start. This action moves the user to the collection progress page,
         displayed below, and starts the collection session.
     </p>
-    <img class="content__tall-image" src="Pictures/Researcher/collecting_page.png">
+    <img class="content__tall-image" src="Pictures/Researcher/collecting_page.png" alt="Collecting Page">
     <p class="content__text">
         The collection session first downloads and parses a csv file from the official NASDAQ website. The file contains
         a list of all public US stock tickers and the respective sector and industry the stock is considered to be in.
@@ -119,7 +148,7 @@
         worth noting that analysis can be done while a collection session is active. If the user is in the collection
         section, he/she must press the "Analyze" tab at the top left to get a bunch of options shown below.
     </p>
-    <img class="content__tall-image" src="Pictures/Researcher/options_page.png">
+    <img class="content__tall-image" src="Pictures/Researcher/options_page.png" alt="Options Page">
     <p class="content__text">
         With "Get measures from" you can select any day stored in the database to analyze. The "Stock performance on"
         can be used to see the percent gain/loss the stock has achieved past the "Get measures from" date. The "Analyze"
@@ -156,7 +185,7 @@
         After the user has selected the options, the "Analyze" button should be pressed. This brings up a new a bigger
         window shown below.
     </p>
-    <img class="content__wide-image" src="Pictures/Researcher/analysis_window.png">
+    <img class="content__wide-image" src="Pictures/Researcher/analysis_window.png" alt="Analysis Window">
     <p class="content__text">
         There are two tables shown. The top table shows the basic statistics of the stocks being compared as a whole.
         The tables uses mean, Q1, median and Q3. The bottom table shows the main information the user is interested in.
@@ -184,7 +213,10 @@
         again, stock ordering will be reversed. For example, in the below picture, I have hidden the statistic table and
         I have clicked the ROE column title once.
     </p>
-    <img class="content__wide-image" src="Pictures/Researcher/analysis_window_modified.png">
+    <img class="content__wide-image"
+         src="Pictures/Researcher/analysis_window_modified.png"
+         alt="Analysis Window Modified"
+    >
 
     <h2 class="content__topic">Technologies used</h2>
     <u class="content__text">Python 3</u>
@@ -296,5 +328,11 @@
         though.
     </p>
 </div>
+<div class="bottom-styler"></div>
+<button class="top-scroll-button" onclick="scrollToTop()">
+    <span class="top-scroll-button__text">
+        &#8679
+    </span>
+</button>
 </body>
 </html>

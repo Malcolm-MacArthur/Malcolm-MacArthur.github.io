@@ -1,8 +1,8 @@
 .content{
     clear: both;
     
-    padding: 5vh 5vw;
-    margin: 10vh 10vw;
+    padding: 0 5vw;
+    margin: 0 10vw;
     
     background-color: #222831;
 }
@@ -17,4 +17,8 @@
     
     font-size: 3vmin;
     color: #eeeeee;
+}
+
+.content__list:last-child{
+    margin-bottom: 0;
 }

@@ -101,10 +101,36 @@ body {
     transform: skew(45deg);
 }
 
+.top-styler{
+    height: 10vmin;
+
+    margin: 10vh 10vw 0 10vw;
+
+    background: linear-gradient(135deg, transparent 7.07106781186vmin, #222831 7.07106781186vmin);
+}
+
+.bottom-styler{
+    height: 10vmin;
+
+    margin: 0 10vw 10vh 10vw;
+
+    background: linear-gradient(315deg, transparent 7.07106781186vmin, #222831 7.07106781186vmin);
+}
+
 .button--normal:hover{
     border-color: #eeeeee;
 }
 
 .button--selected:hover{
     border-color: #00adb5;
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .top-styler{
+        margin: 10vw 0 0 0;
+    }
+    
+    .bottom-styler{
+        margin: 0 0 10vw 0;
+    }
 }

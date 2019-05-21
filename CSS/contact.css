@@ -1,9 +1,9 @@
 .content{
     clear: both;
-
-    padding: 5vh 5vw;
-    margin: 10vh 10vw;
-
+    
+    padding: 0 5vw;
+    margin: 0 10vw;
+    
     background-color: #222831;
 }
 
@@ -15,6 +15,7 @@
 
 .content__text{
     font-size: 3vmin;
+    text-align: center;
     color: #eeeeee;
 }
 
@@ -31,13 +32,16 @@
     cursor: pointer;
 }
 
+.content__topic:first-child{
+    margin-top: 0;
+}
+
+.content__text:last-child{
+    margin-bottom: 0;
+}
+
 @media (max-aspect-ratio: 1/1) {
     .content{
-        margin: 10vh 0;
-    }
-
-    .content__tall-image{
-        left: 10%;
-        width: 80%;
+        margin: 0;
     }
 }
