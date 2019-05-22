@@ -10,21 +10,22 @@
             src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async>
     </script>
     <script>
-        function updateProgressColor() {
-            let percentScroll = (window.pageYOffset + screen.height*(window.pageYOffset/document.body.scrollHeight))
-              / document.body.scrollHeight;
-            let topScrollButton = document.getElementsByClassName("top-scroll-button__text")[0];
-            let colorRange = 68;
-            let colorStart = 12;
+      function updateProgressColor() {
+        let percentScroll = (window.pageYOffset +
+          window.innerHeight*(Math.min(1.1*(window.pageYOffset/document.body.scrollHeight), 1)))
+          / document.body.scrollHeight;
+        let topScrollButton = document.getElementsByClassName("top-scroll-button__text")[0];
+        let colorRange = 65;
+        let colorStart = 15;
 
-            let colorOffset =  colorStart + colorRange *  percentScroll;
-            topScrollButton.style.backgroundImage =
-              'linear-gradient(180deg, #eeeeee '+colorOffset.toString()+'%, #00adb5 0%)';
-        }
+        let colorOffset =  colorStart + colorRange *  percentScroll;
+        topScrollButton.style.backgroundImage =
+          'linear-gradient(180deg, #eeeeee '+colorOffset.toString()+'%, #00adb5 0%)';
+      }
 
-        function scrollToTop() {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     </script>
     <script> </script> <!--Used to "fix" chrome transition bug https://stackoverflow.com/a/42969608/5262028-->
 </head>

@@ -67,7 +67,7 @@ body {
     bottom: 1vh;
     right: 1vw;
     
-    border: 0vmin #eeeeee solid;
+    border: 0 #eeeeee solid;
     background: linear-gradient(135deg, transparent 20%, #222831 20%,  #222831 80%, transparent 80%);
     color: #eeeeee;
     font-size: 10vmin;
@@ -80,23 +80,23 @@ body {
     
     display: block;
     
-    /*Blue color "starts" after 12% and ends at 80%*/
-    background-image: linear-gradient(180deg, #eeeeee 12%, #00adb5 0%); 
+    /*Blue color "starts" after 15% and ends at 80%*/
+    background-image: linear-gradient(180deg, #eeeeee 15%, #00adb5 0%);
     
     transition: 0.3s;
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
+    transform: translateY(0);
 }
 
 .top-scroll-button:focus {
   outline: none;
 }
 
-.top-scroll-button:hover .top-scroll-button__text{
-    transform: translateY(-8%);
+.top-scroll-button:hover .top-scroll-button__text {
+        transform: translateY(-8%);
 }
-
 
 @media (max-aspect-ratio: 1/1) {
     .content{
@@ -111,5 +111,17 @@ body {
     
     .top-scroll-button{
         background: linear-gradient(135deg, transparent 20%, #393e46 20%,  #393e46 80%, transparent 80%);
+    }
+}
+
+/*
+KNOWN BUG
+
+none is reported for desktop computers using chrome.
+https://bugs.chromium.org/p/chromium/issues/detail?id=867912&q=hover%20none%20os%3DLinux&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Component%20Status%20Owner%20Summary%20OS%20Modified
+*/
+@media (hover: none) {
+    .top-scroll-button:hover .top-scroll-button__text {
+        transform: translateY(0);
     }
 }
