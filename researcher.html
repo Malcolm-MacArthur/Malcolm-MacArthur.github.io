@@ -6,9 +6,10 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="CSS/main.css">
     <link rel="stylesheet" type="text/css" href="CSS/researcher.css">
-    <script type="text/javascript"
-            src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async>
     </script>
+    <script src="JavaScript/helpers.js"></script>
+    <script> </script> <!--Used to "fix" chrome transition bug https://stackoverflow.com/a/42969608/5262028 -->
     <script>
       function updateProgressColor() {
         let percentScroll = (window.pageYOffset +
@@ -23,11 +24,35 @@
           'linear-gradient(180deg, #eeeeee '+colorOffset.toString()+'%, #00adb5 0%)';
       }
 
-      function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      function updateHoverState(event){
+        let box = document.getElementsByClassName("top-scroll-button")[0];
+        let arrow = document.getElementsByClassName("top-scroll-button__text")[0];
+
+        if (cursorInsideHexagon(event, box, 0.2)) {
+          arrow.style.transform = "translateY(-8%)";
+          box.style.cursor = "pointer";
+        } else {
+          arrow.style.transform = "translateY(0)";
+          box.style.cursor = "default";
+        }
+      }
+
+      function exitHoverState() {
+        let box = document.getElementsByClassName("top-scroll-button")[0];
+        let arrow = document.getElementsByClassName("top-scroll-button__text")[0];
+
+        arrow.style.transform = "translateY(0)";
+        box.style.cursor = "default";
+      }
+
+      function doCorrectClickAction(event){
+        let box = document.getElementsByClassName("top-scroll-button")[0];
+
+        if (cursorInsideHexagon(event, box, 0.2)) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       }
     </script>
-    <script> </script> <!--Used to "fix" chrome transition bug https://stackoverflow.com/a/42969608/5262028-->
 </head>
 <body onscroll="updateProgressColor()" onresize="updateProgressColor()">
 <div class="header">
@@ -330,10 +355,10 @@
     </p>
 </div>
 <div class="bottom-styler"></div>
-<button class="top-scroll-button" onclick="scrollToTop()">
+<div class="top-scroll-button" onclick="doCorrectClickAction(event)" onmousemove="updateHoverState(event)" onmouseout="exitHoverState()">
     <span class="top-scroll-button__text">
         &#8679
     </span>
-</button>
+</div>
 </body>
 </html>

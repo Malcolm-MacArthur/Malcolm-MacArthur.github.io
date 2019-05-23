@@ -6,7 +6,37 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="CSS/main.css">
     <link rel="stylesheet" type="text/css" href="CSS/projects.css">
+    <script src="JavaScript/helpers.js"></script>
     <script> </script> <!--Used to "fix" chrome transition bug https://stackoverflow.com/a/42969608/5262028-->
+    <script>
+      function updateHoverState(event){
+        let box = document.getElementsByClassName("box")[0];
+        let picture = document.getElementsByClassName("box__image")[0];
+
+        if (cursorInsideHexagon(event, box, 0.1)) {
+          picture.style.opacity = "0.4";
+          box.style.cursor = "pointer";
+        } else {
+          picture.style.opacity = "0";
+          box.style.cursor = "default";
+        }
+      }
+
+      function exitHoverState() {
+        let box = document.getElementsByClassName("box")[0];
+        let picture = document.getElementsByClassName("box__image")[0];
+        picture.style.opacity = "0";
+        box.style.cursor = "default";
+      }
+
+      function doCorrectClickAction(event){
+        let box = document.getElementsByClassName("box")[0];
+
+        if (cursorInsideHexagon(event, box, 0.1)) {
+          window.location.pathname = '/Malcolm-MacArthur.github.io/researcher.html';
+        }
+      }
+    </script>
 </head>
 <body>
 <div class="header">
@@ -31,7 +61,7 @@
     </div>
 </div>
 <div class="content">
-    <div class="box" onclick="location.href='researcher.html'">
+    <div class="box" onclick="doCorrectClickAction(event)" onmousemove="updateHoverState(event)" onmouseout="exitHoverState()">
         <div class="box__mask">
             <img class="box__image" src="Pictures/Researcher/analysis_window.png" alt="Analysis window">
         </div>
